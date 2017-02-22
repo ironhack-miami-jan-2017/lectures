@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Express App </title>
+      <!-- localhost:3000/css/styles.css -->
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <h1> How many times should we say hello? </h1>
+
+    <h2> <%= total %> times! </h2>
+
+    <ol>
+      <% for (let i = 1; i <= total; i += 1) { %>
+        <li> hello </li>
+      <% } %>
+    </ol>
+  </body>
+</html>

@@ -7,6 +7,23 @@
     <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
-    <h1> Nizar </h1>
+    <h1> <%= name %> </h1>
+
+    <h2> Places I've Been </h2>
+    <% citiesTraveled.forEach((cityName) => { %>
+      <div class="city">
+        <%= cityName %>
+      </div>
+    <% }); %>
+
+    <h2> Favorite Foods </h2>
+    <ul>
+      <% faveFoods.forEach((foodItem) => { %>
+        <li>
+          <%= foodItem.name %>
+          Calories from this food are <%= foodItem.calories %>
+        </li>
+      <% }) %>
+    </ul>
   </body>
 </html>

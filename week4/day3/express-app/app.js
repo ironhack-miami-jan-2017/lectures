@@ -31,7 +31,23 @@ app.get('/', (req, res, next) => {
 
 app.get('/about', (req, res, next) => {
   // display views/about.ejs for the browser
-  res.render('about');
+  res.render('about', {
+    name: 'Nizar',
+    citiesTraveled: [ 'Miami', 'Madrid', 'Barcelona', 'Paris' ],
+    faveFoods: [
+      { name: 'pizza slice', calories: 400 },
+      { name: 'bagel bites', calories: 380 },
+      { name: 'pizza doritos', calories: 450 },
+    ]
+  });
+});
+
+app.get('/hello', (req, res, next) => {
+  const randomNumber = Math.floor(Math.random() * 23) + 2;
+
+  res.render('hello', {
+    total: randomNumber
+  });
 });
 
 
