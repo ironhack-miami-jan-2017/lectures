@@ -9,6 +9,15 @@
   <body>
     <h1> <%= name %> </h1>
 
+    <p>
+      Would you care for some
+      <% if (age >= 21) { %>
+        mojitos?
+      <% } else { %>
+        juice?
+      <% } %>
+    </p>
+
     <h2> Places I've Been </h2>
     <% citiesTraveled.forEach((cityName) => { %>
       <div class="city">

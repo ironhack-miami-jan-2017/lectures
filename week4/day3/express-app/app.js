@@ -33,6 +33,7 @@ app.get('/about', (req, res, next) => {
   // display views/about.ejs for the browser
   res.render('about', {
     name: 'Nizar',
+    age: 30,
     citiesTraveled: [ 'Miami', 'Madrid', 'Barcelona', 'Paris' ],
     faveFoods: [
       { name: 'pizza slice', calories: 400 },
