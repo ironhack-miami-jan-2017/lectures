@@ -3,25 +3,35 @@ const express = require('express');
 const app = express();
 
 
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
 app.use(express.static('public'));
 
 
-app.get('/', (request, response, next) => {
-  var today = new Date();
+app.get('/', (req, res, next) => {
+  const today = new Date();
+  let message;
 
   if (today.getDay() === 0 || today.getDay() === 6) {
-    response.send('WEEKEND YEAH!!');
+    message = 'WEEKEND YEAH!!';
   } else if (today.getDay() === 3) {
-    response.send('HUMP DAY!! Boo.');
+    message = 'HUMP DAY!! Boo.';
   } else if (today.getDay() === 5) {
-    response.send('HECK YEAH FRIDAY!!');
+    message = 'HECK YEAH FRIDAY!!';
   } else {
-    response.send('Welcome to the home page');
+    message = 'Welcome to the home page';
   }
+
+  // display views/index.ejs for the browser
+  res.render('index', {
+    todaysMessage: message,
+  });
 });
 
-app.get('/about', (request, response, next) => {
-  response.send('We are very touched that you want to know more about us.');
+app.get('/about', (req, res, next) => {
+  // display views/about.ejs for the browser
+  res.render('about');
 });
 
 

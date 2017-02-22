@@ -9,6 +9,7 @@
   "author": "Nizar Khalife Iglesias <khalifenizar@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.5.6",
     "express": "^4.14.1"
   }
 }
