@@ -12,6 +12,24 @@ app.use(expressLayouts);
 app.set('layout', 'layouts/main-layout');
 
 
+app.get('/hugh', (req, res, next) => {
+  // October 12th, 1968
+  //    |
+  //    -----------------------
+  //                          |   (months start at 0)
+  const bday = new Date(1968, 9, 12);
+  const today = new Date();
+
+  const jackmanAge = today.getFullYear() - bday.getFullYear();
+  const monthsUntilBday = bday.getMonth() - today.getMonth();
+
+  res.render('celebrity', {
+    age: jackmanAge,
+    months: monthsUntilBday
+  })
+});
+
+
 app.get('/userform', (req, res, next) => {
   res.render('user-info-form');
 });
