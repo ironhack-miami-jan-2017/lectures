@@ -1,5 +1,6 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -10,6 +11,23 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(expressLayouts);
 app.set('layout', 'layouts/main-layout');
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+app.get('/login', (req, res, next) => {
+  res.render('login');
+});
+
+app.post('/login', (req, res, next) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  if (email === 'n@n.pizza' && password === 'swordfish') {
+    res.render('welcome');
+  } else {
+    res.render('login');
+  }
+});
 
 
 app.get('/hugh', (req, res, next) => {
