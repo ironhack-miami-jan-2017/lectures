@@ -12,6 +12,23 @@ app.use(expressLayouts);
 app.set('layout', 'layouts/main-layout');
 
 
+app.get('/userform', (req, res, next) => {
+  res.render('user-info-form');
+});
+
+app.get('/display-user-info', (req, res, next) => {
+  const name = req.query.name;
+  const age = req.query.age;
+  const superhero = req.query.superhero;
+
+  res.render('display-info', {
+    name: name,
+    age: age,
+    superhero: superhero
+  });
+});
+
+
 app.get('/', (req, res, next) => {
   const today = new Date();
   let message;
