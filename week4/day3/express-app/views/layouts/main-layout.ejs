@@ -15,6 +15,13 @@
       </ul>
     </nav>
 
+    <form action="/search-spotify" method="get">
+      <label for="search-term-input"> Search Term: </label>
+      <input id="search-term-input" type="search" name="searchTerm">
+
+      <button type="submit"> Search </button>
+    </form>
+
     <%- body -%>
 
     <footer>

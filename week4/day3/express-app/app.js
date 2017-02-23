@@ -1,6 +1,7 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
+const SpotifyWebApi = require('spotify-web-api-node');
 
 const app = express();
 
@@ -12,6 +13,27 @@ app.use(express.static('public'));
 app.use(expressLayouts);
 app.set('layout', 'layouts/main-layout');
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
+app.get('/search-spotify', (req, res, next) => {
+  const term = req.query.searchTerm;
+
+  const spotify = new SpotifyWebApi();
+
+  spotify.searchTracks(term, {}, (err, results) => {
+    if (err) {
+      res.send('Oh noes! Error!');
+      return;
+    }
+
+    const theTrack = results.body.tracks.items[0];
+
+    res.render('track-search', {
+      track: theTrack,
+      searchTerm: term
+    });
+  });
+});
 
 
 app.get('/login', (req, res, next) => {
