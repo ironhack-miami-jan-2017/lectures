@@ -1,11 +1,18 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 mongoose.connect('mongodb://localhost/exampleApp');
   //                                       |
   //                                use exampleApp
 
+const catSchema = new Schema({
+  name: String,
+  color: String,
+  age: Number,
+  birthday: Date
+});
 
-const Cat = mongoose.model('Cat', { name: String });
+const Cat = mongoose.model('Cat', catSchema);
   //   |
   //   --------------------
   //                      |
