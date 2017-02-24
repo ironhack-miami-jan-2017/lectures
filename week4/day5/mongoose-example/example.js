@@ -40,3 +40,7 @@ Cat.find({}, { _id: 0, name: 1 }, (err, cats) => {
     console.log(` --> cat: ${oneCat.name} ${oneCat._id}`);
   });
 });
+
+
+  // h4x
+setTimeout(() => mongoose.disconnect(), 1000);
