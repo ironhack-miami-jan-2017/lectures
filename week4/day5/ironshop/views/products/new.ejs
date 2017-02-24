@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Products</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Add a New Product</h1>
+
+    <form action="/products" method="post">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name">
+
+      <label for="price">Price</label>
+      <input type="number" name="price" id="price">
+
+      <label for="image-url">Image URL</label>
+      <input type="text" name="imageUrl" id="image-url">
+
+      <label for="description">Description</label>
+      <textarea type="text" name="description" id="description"></textarea>
+
+      <button type="submit">Create Product</button>
+    </form>
+  </body>
+</html>
