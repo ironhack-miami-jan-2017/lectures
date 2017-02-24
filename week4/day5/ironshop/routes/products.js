@@ -1,10 +1,22 @@
 const express = require('express');
 
+const Product = require('../models/product.js');
+
 const router = express.Router();
 
 
 router.get('/products', (req, res, next) => {
-  res.send('Products list page');
+  Product.find((err, products) => {
+    if (err) {
+      next(err);
+      return;
+    }
+
+      // display views/products/index.ejs
+    res.render('products/index', {
+      products: products
+    });
+  });
 });
 
 // router.get('/products/new', () => {});
