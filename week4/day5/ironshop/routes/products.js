@@ -49,5 +49,25 @@ router.post('/products', (req, res, next) => {
   });
 });
 
+router.get('/products/:id', (req, res, next) => {
+    //                 --
+    //                  |
+    //                  --------
+    //                         |
+  const productId = req.params.id;
+
+    // db.products.findOne({ _id: productId })
+  Product.findById(productId, (err, prodDoc) => {
+    if (err) {
+      next(err);
+      return;
+    }
+
+    res.render('products/show', {
+      product: prodDoc
+    });
+  });
+});
+
 
 module.exports = router;

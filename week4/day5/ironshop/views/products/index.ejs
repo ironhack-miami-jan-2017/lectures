@@ -14,7 +14,10 @@
         <li>
           <h2> <%= oneProduct.name %> </h2>
           <p>$ <%= oneProduct.price %> </p>
-          <!--img src="<%= oneProduct.imageUrl %>"-->
+
+          <a href="/products/<%= oneProduct._id %>">
+            See Product Details
+          </a>
         </li>
       <% }) %>
     </ul>
