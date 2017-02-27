@@ -109,5 +109,24 @@ router.post('/products/:id', (req, res, next) => {
   });
 });
 
+router.post('/products/:id/delete', (req, res, next) => {
+  const productId = req.params.id;
+
+    // db.products.deleteOne({ _id: productId })
+  Product.findByIdAndRemove(productId, (err, product) => {
+    if (err) {
+      next(err);
+      return;
+    }
+
+      // redirect to http://localhost:3000/products
+      //                                  ---------
+      //                                       |
+      //               -------------------------
+      //               |
+    res.redirect('/products');
+  });
+});
+
 
 module.exports = router;

@@ -22,6 +22,10 @@
           <a href="/products/<%= oneProduct._id %>/edit">
             Edit
           </a>
+
+          <form action="/products/<%= oneProduct._id %>/delete" method="post">
+            <button type="submit"> Delete </button>
+          </form>
         </li>
       <% }) %>
     </ul>
