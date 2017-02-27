@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Products</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1> Edit a Product </h1>
+
+    <form action="/products/<%= product._id %>" method="post">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" value="<%= product.name %>">
+
+      <label for="price">Price</label>
+      <input type="number" name="price" id="price" value="<%= product.price %>">
+
+      <label for="image-url">Image URL</label>
+      <input type="text" name="imageUrl" id="image-url" value="<%= product.imageUrl %>">
+
+      <label for="description">Description</label>
+      <textarea type="text" name="description" id="description"><%= product.description %></textarea>
+
+      <button type="submit">Update Product</button>
+    </form>
+  </body>
+</html>

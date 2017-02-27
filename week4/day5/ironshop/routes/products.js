@@ -69,5 +69,45 @@ router.get('/products/:id', (req, res, next) => {
   });
 });
 
+router.get('/products/:id/edit', (req, res, next) => {
+  const productId = req.params.id;
+
+  Product.findById(productId, (err, prodDoc) => {
+    if (err) {
+      next(err);
+      return;
+    }
+
+    res.render('products/edit', {
+      product: prodDoc
+    });
+  });
+});
+
+router.post('/products/:id', (req, res, next) => {
+  const productId = req.params.id;
+  const productUpdates = {
+    name: req.body.name,
+    price: req.body.price,
+    imageUrl: req.body.imageUrl,
+    description: req.body.description,
+  };
+
+    // db.products.updateOne({ _id: productId }, { $set: productUpdates })
+  Product.findByIdAndUpdate(productId, productUpdates, (err, product) => {
+    if (err) {
+      next(err);
+      return;
+    }
+
+      // redirect to http://localhost:3000/products
+      //                                  ---------
+      //                                       |
+      //               -------------------------
+      //               |
+    res.redirect('/products');
+  });
+});
+
 
 module.exports = router;
