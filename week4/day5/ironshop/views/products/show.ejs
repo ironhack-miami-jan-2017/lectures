@@ -15,6 +15,10 @@
 
     <p> <%= product.description %> </p>
 
+    <a href="/products/<%= product._id %>/reviews/new">
+      Review This Product
+    </a>
+
     <a href="/products/<%= product._id %>/edit">
       Edit
     </a>
@@ -22,5 +26,17 @@
     <form action="/products/<%= product._id %>/delete" method="post">
       <button type="submit"> Delete </button>
     </form>
+
+    <h2> Customer Reviews </h2>
+
+    <ul>
+      <% product.reviews.forEach((oneReview) => { %>
+        <li>
+          <p> <%= oneReview.content %> </p>
+          <strong> <%= oneReview.stars %> / 5 </strong>
+          <p> <%= oneReview.author %> </p>
+        </li>
+      <% }) %>
+    </ul>
   </body>
 </html>

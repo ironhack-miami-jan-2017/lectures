@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 
 var index = require('./routes/index');
 const productRoutes = require('./routes/products.js');
+const reviewsRoutes = require('./routes/product-reviews.js');
 
 mongoose.connect('mongodb://localhost/ironshopDev');
 var app = express();
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/', productRoutes);
+app.use('/', reviewsRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

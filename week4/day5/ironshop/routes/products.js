@@ -21,7 +21,9 @@ router.get('/products', (req, res, next) => {
 
 router.get('/products/new', (req, res, next) => {
     // display views/products/new.ejs
-  res.render('products/new');
+  res.render('products/new', {
+    errorMessage: ''
+  });
 });
 
 router.post('/products', (req, res, next) => {
@@ -36,7 +38,10 @@ router.post('/products', (req, res, next) => {
 
   theProduct.save((err) => {
     if (err) {
-      next(err);
+      res.render('products/new', {
+        errorMessage: 'Validation failed!',
+        errors: theProduct.errors
+      });
       return;
     }
 

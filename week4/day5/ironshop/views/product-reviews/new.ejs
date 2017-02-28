@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> New Review </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1> Review <%= product.name %> </h1>
+
+    <form action="/products/<%= product._id %>/reviews" method="post">
+      <label for="author">Email Address</label>
+      <input type="text" name="author" id="author">
+
+      <label for="author">Stars</label>
+      <input type="number" name="stars" id="stars">
+
+      <label for="content">Content</label>
+      <textarea name="content" rows="3" cols="80"></textarea>
+
+      <button type="submit">Submit Review</button>
+    </form>
+  </body>
+</html>
