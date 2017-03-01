@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
+const session      = require('express-session');
+const MongoStore   = require('connect-mongo')(session);
 
 
 mongoose.connect('mongodb://localhost/basic-auth');
@@ -27,6 +29,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
+app.use(session({
+  secret: 'sessions are hard dude',
+  cookie: { maxAge: 60000 },
+  resave: true,
+  saveUninitialized: true,
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    ttl: 24 * 60 * 60
+  })
+}));
 
 const index = require('./routes/index');
 const authRoutes = require('./routes/auth-routes.js');
