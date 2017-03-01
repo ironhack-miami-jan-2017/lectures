@@ -46,4 +46,24 @@ authRoutes.post("/signup", (req, res, next) => {
   });
 });
 
+
+const passport = require('passport');
+
+authRoutes.get('/login', (req, res, next) => {
+  res.render('auth/login-view.ejs');
+});
+
+
+authRoutes.post('/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true,
+    passReqToCallback: true
+  })
+);
+
+
+
+
 module.exports = authRoutes;
