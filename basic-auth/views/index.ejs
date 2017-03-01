@@ -2,6 +2,14 @@
 <p>Welcome to <%= title %></p>
 
 <ul>
-  <li> <a href="/signup">Sign Up</a> </li>
-  <li> <a href="/login">Log In</a> </li>
+  <% if (loggedUser) { %>
+    Hello, <%= loggedUser.username %>!
+    <li> <a href="/secret">Secret Logged-In Only Page</a> </li>
+    <li> <a href="/logout">Log Out</a> </li>
+
+  <% } else { %>
+
+    <li> <a href="/signup">Sign Up</a> </li>
+    <li> <a href="/login">Log In</a> </li>
+  <% } %>
 </ul>

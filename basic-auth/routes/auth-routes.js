@@ -103,4 +103,16 @@ authRoutes.post('/login', (req, res, next) => {
 });
 
 
+authRoutes.get('/logout', (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) {
+      next(err);
+      return;
+    }
+
+    res.redirect('/');
+  });
+});
+
+
 module.exports = authRoutes;
