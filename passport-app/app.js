@@ -10,6 +10,7 @@ const session      = require('express-session');
 const passport     = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const FbStrategy    = require('passport-facebook').Strategy;
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const bcrypt        = require('bcrypt');
 const flash         = require('connect-flash');
 
@@ -65,6 +66,14 @@ passport.use(new FbStrategy({
   callbackURL: 'http://localhost:3000/auth/facebook/callback'
 }, (accessToken, refreshToken, profile, done) => {
   done(null, profile);
+}));
+
+passport.use(new GoogleStrategy({
+  clientID: '...',
+  clientSecret: '...',
+  callbackURL: 'http://localhost:3000/auth/google/callback'
+}, (accessToken, refreshToken, profile, next) => {
+  next(null, profile);
 }));
 
 passport.serializeUser((user, cb) => {
