@@ -1,5 +1,9 @@
 <h1> Log In </h1>
 
+<% if (errorMessage.length > 0) { %>
+  <p class="error"> <%= errorMessage %> </p>
+<% } %>
+
 <form action="/login" method="POST">
   <div>
     <label for="username">Username:</label>

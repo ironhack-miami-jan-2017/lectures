@@ -40,6 +40,7 @@ authRoutes.post("/signup", (req, res, next) => {
       if (err) {
         res.render("auth/signup-view.ejs", { message: "Something went wrong" });
       } else {
+        req.flash('success', 'You have been registered. Try logging in.');
         res.redirect("/");
       }
     });
@@ -50,7 +51,9 @@ authRoutes.post("/signup", (req, res, next) => {
 const passport = require('passport');
 
 authRoutes.get('/login', (req, res, next) => {
-  res.render('auth/login-view.ejs');
+  res.render('auth/login-view.ejs', {
+    errorMessage: req.flash('error')
+  });
 });
 
 
@@ -59,6 +62,7 @@ authRoutes.post('/login',
     successRedirect: '/',
     failureRedirect: '/login',
     failureFlash: true,
+    successFlash: 'You have been logged in, user!',
     passReqToCallback: true
   })
 );

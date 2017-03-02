@@ -10,6 +10,7 @@ const session      = require('express-session');
 const passport     = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt        = require('bcrypt');
+const flash         = require('connect-flash');
 
 const User          = require('./models/user-model.js');
 
@@ -39,6 +40,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 

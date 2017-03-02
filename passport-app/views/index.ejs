@@ -1,7 +1,19 @@
 <h1><%= title %></h1>
 <p>Welcome to <%= title %></p>
 
+<% if (successMessage.length > 0) { %>
+  <p class="success"> <%= successMessage %> </p>
+<% } %>
+
+<% if (userInfo) { %>
+  <p> Welcome, <%= userInfo.firstName %>. </p>
+<% } %>
+
 <ul>
-  <li> <a href="/signup">Sign Up</a> </li>
-  <li> <a href="/login">Log In</a> </li>
+  <% if (userInfo) { %>
+    <li> <a href="/logout">Log Out</a> </li>
+  <% } else { %>
+    <li> <a href="/signup">Sign Up</a> </li>
+    <li> <a href="/login">Log In</a> </li>
+  <% } %>
 </ul>

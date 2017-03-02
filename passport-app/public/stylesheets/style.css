@@ -6,3 +6,15 @@ body {
 a {
   color: #00B7FF;
 }
+
+.success {
+  background-color: lightgreen;
+  color: white;
+  padding: 20px;
+}
+
+.error {
+  background-color: red;
+  color: white;
+  padding: 20px;
+}
