@@ -78,6 +78,9 @@ app.use('/', index);
 
 const authRoutes = require('./routes/auth-routes.js');
 app.use('/', authRoutes);
+
+const protRoutes = require('./routes/protected-routes.js');
+app.use('/', protRoutes);
 // --------------------------------------------
 
 
