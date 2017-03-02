@@ -1,0 +1,13 @@
+<h1> Your Rooms </h1>
+
+<a href="/rooms/new"> Add a New Room </a>
+
+<ul>
+  <% rooms.forEach((oneRoom) => { %>
+    <li>
+      <h2> <%= oneRoom.name %> </h2>
+      <p> <%= oneRoom.desc %> </p>
+      <img src="<%= oneRoom.picture %>">
+    </li>
+  <% }) %>
+</ul>

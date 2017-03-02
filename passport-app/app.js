@@ -108,6 +108,9 @@ app.use('/', authRoutes);
 
 const protRoutes = require('./routes/protected-routes.js');
 app.use('/', protRoutes);
+
+const roomsRoutes = require('./routes/rooms-routes.js');
+app.use('/', roomsRoutes);
 // --------------------------------------------
 
 
