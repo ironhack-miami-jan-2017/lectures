@@ -9,6 +9,7 @@ const mongoose     = require('mongoose');
 const session      = require('express-session');
 const passport     = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const FbStrategy    = require('passport-facebook').Strategy;
 const bcrypt        = require('bcrypt');
 const flash         = require('connect-flash');
 
@@ -58,11 +59,28 @@ passport.use(new LocalStrategy((username, password, next) => {
   });
 }));
 
+passport.use(new FbStrategy({
+  clientID: '...',
+  clientSecret: '...',
+  callbackURL: 'http://localhost:3000/auth/facebook/callback'
+}, (accessToken, refreshToken, profile, done) => {
+  done(null, profile);
+}));
+
 passport.serializeUser((user, cb) => {
-  cb(null, user._id);
+  if (user.provider) {
+    cb(null, user);
+  } else {
+    cb(null, user._id);
+  }
 });
 
 passport.deserializeUser((id, cb) => {
+  if (id.provider) {
+    cb(null, id);
+    return;
+  }
+
   User.findOne({ "_id": id }, (err, user) => {
     if (err) { return cb(err); }
     cb(null, user);

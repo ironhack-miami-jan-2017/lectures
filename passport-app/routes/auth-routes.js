@@ -74,6 +74,11 @@ authRoutes.get("/logout", (req, res) => {
 });
 
 
+authRoutes.get("/auth/facebook", passport.authenticate("facebook"));
+authRoutes.get("/auth/facebook/callback", passport.authenticate("facebook", {
+  successRedirect: "/",
+  failureRedirect: "/login"
+}));
 
 
 module.exports = authRoutes;
