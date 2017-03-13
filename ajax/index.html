@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="feedback"></div>
+
+  <h1>Pokemon info</h1>
+  <p id="pokeInfo"></p>
+  <button id="pokeButton">Get Pokemon!</button>
+
+  <button id="post-wall-e"> Post WALL-E </button>
+
+
+  <h3> Post a new character </h3>
+  <form id="character-form">
+    <div>
+      <label for="the-name-input"> Name: </label>
+      <input type="text" name="name" id="the-name-input">
+    </div>
+
+    <div>
+      <label for="the-occupation-input"> Occupation: </label>
+      <input type="text" name="occupation" id="the-occupation-input">
+    </div>
+
+    <div>
+      <label for="the-weapon-input"> Weapon: </label>
+      <input type="text" name="weapon" id="the-weapon-input">
+    </div>
+
+    <button> Post this character </button>
+  </form>
+
+
+
+  <h3> Update a character </h3>
+  <form id="update-form">
+    <div>
+      <label for="update-name-input"> Name: </label>
+      <input type="text" name="name" id="update-name-input">
+    </div>
+
+    <div>
+      <label for="update-occupation-input"> Occupation: </label>
+      <input type="text" name="occupation" id="update-occupation-input">
+    </div>
+
+    <div>
+      <label for="update-weapon-input"> Weapon: </label>
+      <input type="text" name="weapon" id="update-weapon-input">
+    </div>
+
+    <div>
+      <label for="character-id-input"> Character ID: </label>
+      <input type="text" name="characterId" id="character-id-input">
+    </div>
+
+    <button> Update this character </button>
+  </form>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
